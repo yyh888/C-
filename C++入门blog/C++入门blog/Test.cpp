@@ -136,8 +136,129 @@ double Add(double a, double b)*/;
 
 
 
+//int main()
+//{
+//	const int a = 1;
+//	int& b = a;//error
+//	const int& b = a;//correct
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	int a = 10;
+//	const int& b = a;//correct, È¨ÏŞËõĞ¡
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	double b = 1.3;
+//	int c = 1;
+//	c = b;
+//	double& rc = c;//error
+//	const double& rc = c;//correct
+//	return 0;
+//}
+
+
+
+
+
+//void Swap(int& a, int& b)
+//{
+//	int tmp = a;
+//	a = b;
+//	b = tmp;
+//}
+
+
+//int main()
+//{
+//	double d = 1.1;
+//	int& c = (int)d;
+//	return 0;
+//}
+
+
+
+//int& Add(int a, int b)
+//{
+//	int c = a + b;
+//	return c;
+//}
+//
+//int main()
+//{
+//	int ret = Add(1, 2);
+//	return 0;
+//}
+
+
+//inline int Add(int a, int b)
+//{
+//	return a + b;
+//}
+//
+//
+//int main()
+//{
+//	Add(1, 2);
+//	return 0;
+//}
+
+//#define ADD(x, y) ((x) + (y))
+//
+//
+//int main()
+//{
+//	int c = ADD(1 | 2, 1 | 3);
+//	int d = ADD(1, 2) * 3;
+//	return 0;
+//}
+
+
+
+//int main()
+//{
+//	int x = 10;
+//	auto a = &x;
+//	auto* b = &x;
+//	int& y = x;
+//	auto& c = y;
+//	return 0;
+//}
+
+
+//void fun(auto x)//error1
+//{}
+//
+//int main()
+//{
+//	int a[] = { 1, 2, 3 };
+//	auto b[] = { 1, 2, 3 };//error2
+//	return 0;
+//}
+
+
+
 int main()
 {
+	int a[] = { 1, 2, 3, 4, 5 };
+	for (int i = 0; i < sizeof(a) / sizeof(a[0]); i++)
+	{
+		cout << a[i] << " ";
+	}
+	cout << endl;
 
+	//·¶Î§for
+	for (auto e : a)
+	{
+		cout << e << " ";
+	}
 	return 0;
 }

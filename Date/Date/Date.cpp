@@ -40,17 +40,24 @@ void Date::Print()
 
 Date& Date::operator+=(int day)
 {
-	_day += day;
-	//日期不合法就进位使其合法
-	while (_day > GetMonthDay(_year, _month))
+	if (day > 0)
 	{
-		_month++;
-		if (_month > 12)
+		_day += day;
+		//日期不合法就进位使其合法
+		while (_day > GetMonthDay(_year, _month))
 		{
-			_year++;
-			_month = 1;
+			_month++;
+			if (_month > 12)
+			{
+				_year++;
+				_month = 1;
+			}
+			_day -= GetMonthDay(_year, _month);
 		}
-		_day -= GetMonthDay(_year, _month);
+	}
+	else
+	{
+		*this -= -day;
 	}
 	return *this;
 }
@@ -67,15 +74,22 @@ Date Date::operator+(int day)
 
 Date& Date::operator-=(int day)
 {
-	_day -= day;
-	while (_day <= 0)
+	if (day < 0)
 	{
-		if ((_month--) < 0)
+		*this += -day;
+	}
+	else
+	{
+		_day -= day;
+		while (_day <= 0)
 		{
-			_year--;
-			_month = 12;
+			if ((_month--) < 0)
+			{
+				_year--;
+				_month = 12;
+			}
+			_day += GetMonthDay(_year, _month);
 		}
-		_day += GetMonthDay(_year, _month);
 	}
 	return *this;
 }
@@ -93,17 +107,7 @@ Date Date::operator-(int day)
 //++d
 Date& Date::operator++()
 {
-	_day++;
-	if (_day > GetMonthDay(_year, _month))
-	{
-		_day = 1;
-		_month++;
-		if (_month > 12)
-		{
-			_month = 1;
-			_year++;
-		}
-	}
+	*this += 1;
 	return *this;
 }
 
@@ -112,16 +116,101 @@ Date& Date::operator++()
 Date Date::operator++(int)
 {
 	Date ret(*this);
-	_day++;
-	if (_day > GetMonthDay(_year, _month))
+	*this += 1;
+	return ret;
+}
+
+
+
+//--d
+Date& Date::operator--()
+{
+	*this -= 1;
+	return *this;
+}
+
+
+
+//d--
+Date Date::operator--(int)
+{
+	Date tmp(*this);
+	*this -= 1;
+	return tmp;
+}
+
+// d1 < d2 ? -->  d1.operator<(&d1, d2)
+bool Date::operator<(const Date& d)
+{
+	if (_year < d._year)
 	{
-		_day = 1;
-		_month++;
-		if (_month > 12)
+		return true;
+	}
+	else if (_year == d._year)
+	{
+		if (_month < d._month)
 		{
-			_month = 1;
-			_year++;
+			return true;
+		}
+		else if (_month == d._month)
+		{
+			if (_day < d._month)
+			{
+				return true;
+			}
 		}
 	}
-	return ret;
+	return false;
+}
+
+
+bool Date::operator==(const Date& d)
+{
+	return _year == d._year && _month == d._month && _day == d._day;
+}
+
+
+//d1 <= d2? --> d1.operator(&d1, d2)
+bool Date::operator<=(const Date& d)
+{
+	return *this < d || *this == d;
+}
+
+
+bool Date::operator>(const Date& d)
+{
+	return !(*this <= d);
+}
+
+
+bool Date::operator>=(const Date& d)
+{
+	return !(*this < d);
+}
+
+
+bool Date::operator!=(const Date& d)
+{
+	return !(*this == d);
+}
+
+
+int Date::operator-(const Date& d)
+{
+	Date max = *this;
+	Date min = d;
+	int flag = 1;
+	if (*this < d)
+	{
+		max = d;
+		min = *this;
+		flag = -1;
+	}
+	int n = 0;
+	while (min != max)
+	{
+		n++;
+		min++;
+	}
+	return n * flag;
 }

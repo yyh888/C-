@@ -4,14 +4,18 @@
 
 void Test1()
 {
-	Date d(2022, 6, 26);
+	Date d(2021, 5, 27);
 	d.Print();
-	d -= 365;
+	d -= 120;
 	d.Print();
-	d++;
-	d.Print();
-	++d;
-	d.Print();
+}
+
+
+void Test2()
+{
+	Date d1(2022, 7, 31);
+	Date d2(2022, 6, 28);
+	cout << d1 - d2 << endl;
 }
 
 int main()
@@ -24,6 +28,7 @@ int main()
 	d.Print();
 	Date d1 = d + 10;
 	d1.Print();*/
-	Test1();
+	//Test1();
+	Test2();
 	return 0;
 }

@@ -16,6 +16,7 @@ void Test2()
 	Date d1(2022, 7, 31);
 	Date d2(2022, 6, 28);
 	cout << d1 - d2 << endl;
+	cout << d2 - d1 << endl;
 }
 
 int main()

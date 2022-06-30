@@ -46,13 +46,13 @@ Date& Date::operator+=(int day)
 		//日期不合法就进位使其合法
 		while (_day > GetMonthDay(_year, _month))
 		{
+			_day -= GetMonthDay(_year, _month);
 			_month++;
 			if (_month > 12)
 			{
 				_year++;
 				_month = 1;
 			}
-			_day -= GetMonthDay(_year, _month);
 		}
 	}
 	else

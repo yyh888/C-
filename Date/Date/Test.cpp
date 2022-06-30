@@ -30,6 +30,9 @@ int main()
 	Date d1 = d + 10;
 	d1.Print();*/
 	//Test1();
-	Test2();
+	//Test2();
+	Date d(1941, 12, 11);
+	d += 100;
+	d.Print();
 	return 0;
 }

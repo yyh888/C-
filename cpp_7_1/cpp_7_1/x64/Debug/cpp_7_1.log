@@ -1,0 +1,7 @@
+﻿  Test.cpp
+D:\C++\cpp\cpp_7_1\cpp_7_1\Test.cpp(93,27): error C2664: “size_t strlen(const char *)”: 无法将参数 1 从“char”转换为“const char *”
+D:\C++\cpp\cpp_7_1\cpp_7_1\Test.cpp(93,24): message : 从整型类型转换为指针类型需要 reinterpret_cast、C 样式转换或带圆括号的函数样式强制转换
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\string.h(215,16): message : 参见“strlen”的声明
+D:\C++\cpp\cpp_7_1\cpp_7_1\Test.cpp(93,9): warning C4473: “printf”: 没有为格式字符串传递足够的参数
+D:\C++\cpp\cpp_7_1\cpp_7_1\Test.cpp(93,9): message : 占位符和其参数预计 1 可变参数，但提供的却是 0 参数
+D:\C++\cpp\cpp_7_1\cpp_7_1\Test.cpp(93,9): message : 缺失的可变参数 1 为格式字符串“%d”所需

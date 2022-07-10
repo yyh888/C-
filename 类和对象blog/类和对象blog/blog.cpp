@@ -316,31 +316,215 @@ using namespace std;
 
 
 
+//
+//class Date
+//{
+//public:
+//	Date(int year = 0, int month = 1, int day = 1)
+//	{
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//	Date(Date& d)
+//	{
+//		_year = d._year;
+//		_month = d._month;
+//		_day = d._day;
+//	}
+//	Date& operator=(const Date& d)
+//	{
+//		this->_day = d._day;
+//		this->_month = d._month;
+//		this->_year = d._year;
+//		return *this;
+//	}
+//	void Print()
+//	{
+//		cout << _year << "-" << _month << "-" << _day << endl;
+//	}
+//	private:
+//	int _year;
+//	int _month;
+//	int _day;
+//};
+//
+//int main()
+//{
+//	Date d1(2022, 7, 9);
+//	Date d2;
+//	d2 = d1;
+//	d2.Print();
+//	return 0;
+//}
 
-class Date
+
+
+//class Date
+//{
+//public:
+//	Date(int year = 0, int month = 1, int day = 1)
+//	{
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//	void Fun() 
+//	{
+//		Print();
+//	}
+//	void Print() const
+//	{
+//		cout << _year << endl;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//};
+//
+//int main()
+//{
+//	Date d1(2022, 7, 10);
+//	Date d2(2022, 7, 10);
+//	return 0;
+//}
+
+
+
+//const Date* operator&() const
+//{
+//	return this;
+//}
+
+
+//class A
+//{
+//public:
+//	//不是默认构造函数(需要传参)
+//	A(int x)
+//		: _x(x)
+//	{}
+//private:
+//	int _x;
+//};
+//
+//class Date
+//{
+//public:
+//	Date(int year = 1)
+//		: _year(year)
+//		, _n(1)
+//		, _p(year)
+//		, _a(0)
+//	{
+//		//不能在函数体内初始化，只能使用列表初始化
+//		//_n = 1; 
+//		//_p = year;
+//	}
+//private:
+//	int _year;
+//	//引用必须在定义时初始化，但此处是声明，所以没问题
+//	int& _p;
+//	const int _n;
+//	A _a;
+//};
+
+
+//class A
+//{
+//public:
+//	A(int a)
+//		:_a1(a)
+//		, _a2(_a1)
+//	{}
+//	void Print() {
+//		cout << _a1 << " " << _a2 << endl;
+//	}
+//private:
+//	int _a2;
+//	int _a1;
+//};
+//
+//int main() {
+//	A aa(1);
+//	aa.Print();
+//	return 0;
+//}
+
+
+
+//class A
+//{
+//public:
+//	explicit A(int a)
+//		: _a(a)
+//	{}
+//private:
+//	int _a;
+//};
+//
+//int main()
+//{
+//	A a = 2;//相当于先构造一个临时变量 A tmp(2); 
+//	        //再拷贝构造 A a(tmp);
+//	return 0;
+//}
+
+
+
+//class A
+//{
+//public:
+//	A()
+//	{
+//		++_n;
+//	}
+//	A(const A& a)
+//	{
+//		++_n;
+//	}
+//	//所有的对象都是构造或者拷贝构造出来的！！
+//	static int GetCount()
+//	{
+//		return _n;
+//	}
+//private:
+//	//要注意这里是声明，他的初始化要在类外面。
+//	static int _n;
+//};
+//
+//int A::_n = 0;
+//
+//int main()
+//{
+//	A a1;
+//	A a2;
+//	A a3;
+//	cout << a1.GetCount() << endl;
+//	return 0;
+//}
+
+
+
+//class B
+//{
+//public:
+//
+//private:
+//	int _b;
+//};
+
+class A
 {
 public:
-	Date(int year = 0, int month = 1, int day = 1)
+	//B叫做A的内部类
+	class B//B天生是A的友元
 	{
-		_year = year;
-		_month = _month;
-		_day = day;
-	}
-	Date(Date& d)
-	{
-		_year = d._year;
-		_month = d._month;
-		_day = d._day;
-	}
 	private:
-	int _year;
-	int _month;
-	int _day;
+		int _b;
+	};
+private:
+	int _a = 0;
+	int* _p = nullptr;
 };
-
-int main()
-{
-	Date d1(2022, 7, 9);
-    Date d2(d1);
-	return 0;
-}

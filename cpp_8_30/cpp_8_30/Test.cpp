@@ -158,7 +158,7 @@ namespace yyh
 			}
 			else
 			{
-				if(n > _capacity)
+				if (n > _capacity)
 				{
 					reserve(n);
 				}
@@ -201,7 +201,7 @@ namespace yyh
 
 		char& operator[](size_t pos)
 		{
-			assert(pos < _size && pos >= 0);
+			assert(pos < _size&& pos >= 0);
 			return _str[pos];
 		}
 

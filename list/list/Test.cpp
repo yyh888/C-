@@ -1,7 +1,7 @@
 #include "list.h"
-
+#include "Test.h"
 int main()
 {
-	yyh::fun4();
+	yyh::vector1();
 	return 0;
 }

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <assert.h>
+#include "reverse_iterator.h"
 using namespace std;
 
 namespace yyh
@@ -126,6 +127,20 @@ namespace yyh
 	public:
 		typedef __list_iterator<T, T&, T*> iterator;
 		typedef __list_iterator<T, const T&, const T*> const_iterator;
+
+		typedef reverse_iterator<const_iterator, const T&, const T*> const_reverse_iterator;
+		typedef reverse_iterator<iterator, T&, T*> reverse_iterator;
+
+		reverse_iterator rbegin()
+		{
+			return reverse_iterator(end());
+		}
+
+		reverse_iterator rend()
+		{
+			return reverse_iterator(begin());
+		}
+
 		list()
 		{
 			_head = new Node;
@@ -222,7 +237,7 @@ namespace yyh
 				erase(it++);
 			}
 		}
-		
+
 		void push_front(const T& val)
 		{
 			insert(begin(), val);
@@ -383,6 +398,21 @@ namespace yyh
 		for (auto& e : lt)
 		{
 			cout << e << " ";
+		}
+	}
+
+	void fun5()
+	{
+		list<int> lt;
+		lt.push_back(1);
+		lt.push_back(2);
+		lt.push_back(3);
+		lt.push_back(4);
+		list<int>::reverse_iterator rit = lt.rbegin();
+		while (rit != lt.rend())
+		{
+			cout << *rit << " ";
+			++rit;
 		}
 	}
 }

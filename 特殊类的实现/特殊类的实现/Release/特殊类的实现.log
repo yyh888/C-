@@ -1,0 +1,4 @@
+﻿  Test.cpp
+D:\cpp\cpp\特殊类的实现\特殊类的实现\Test.cpp(59,1): error C2280: “StackOnly::StackOnly(const StackOnly &)”: 尝试引用已删除的函数
+D:\cpp\cpp\特殊类的实现\特殊类的实现\Test.cpp(71): message : 参见“StackOnly::StackOnly”的声明
+D:\cpp\cpp\特殊类的实现\特殊类的实现\Test.cpp(71,2): message : “StackOnly::StackOnly(const StackOnly &)”: 已隐式删除函数
